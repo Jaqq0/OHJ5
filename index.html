@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fi">
+    <head>
+        <meta charset="UTF-8">
+        <title>Äänestyssovellus</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body class="container py-4">
+        <h1>Äänestyssovellus</h1>
+        
+        <div id="loginView" class="card p-4 mx-auto" style="max-width: 400px">
+            <h3>Kirjaudu sisään</h3>
+            <input id="username" class="form-control mb-2" placeholder="Käyttäjätunnus">
+            <input id="password" type="password" class="form-control mb-3" placeholder="Salasana">
+            <button class="btn btn-primary w-100" onclick="login()">Kirjaudu</button>
+            <div id="loginError" class="text-danger mt-2" style="display: none;">Virheellinen käyttäjätunnus tai salasana.</div>
+
+            <hr>
+            <p class="small">
+                <strong>Testikäyttäjät:</strong><br>
+                user / user<br>
+                admin / admin
+            </p>            
+        </div>
+
+        <div id="userView" class="d-none">
+            <button class="btn btn-outline-secondary mb-3" onclick="logout()">Kirjaudu ulos</button>
+            
+            <h3>Äänestykset</h3>
+            <div class="card p-3 mb-3">
+                <p><strong>Paras ohjelmointikieli?</strong></p>
+                <button class="btn btn-success" onclick="vote()">Äänestä</button>
+            </div>
+
+            <div id="voteResult" class="alert alert-success d-none">
+                Ääni vastaanotettu! Kiitos äänestämisestä.
+            </div>
+        </div>
+
+        <div id="adminView" class="d-none">
+            <button class="btn btn-online-secondary mb-3" onclick="logout()">Kirjaudu ulos</button>
+
+            <h3>Luo uusi äänestys</h3>
+            <div class="card p-3 mb-4">
+                <input class="form-control mb-2" placeholder="Äänestyksen otsikko">
+                <input class="form-control mb-2" placeholder="Vaihtoehto 1">
+                <input class="form-control mb-2" placeholder="Vaihtoehto 2">
+                <button class="btn btn-primary">Luo äänestys</button>
+            </div>
+
+            <h3>Poista Äänestys</h3>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Paras ohjelmointikieli?
+                    <button class="btn btn-danger btn-sm">Poista</button>
+                </li>
+            </ul>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
