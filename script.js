@@ -1,3 +1,5 @@
+let pollExists = true;
+
 function login() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
@@ -22,13 +24,33 @@ function logout() {
 function showUserView() {
     document.getElementById("loginView").classList.add("d-none");
     document.getElementById("userView").classList.remove("d-none");
+    updatePollVisibility();
 }
 
 function showAdminView() {
     document.getElementById("loginView").classList.add("d-none");
     document.getElementById("adminView").classList.remove("d-none");
+    updatePollVisibility();
+}
+
+function updatePollVisibility() {
+    document.getElementById("pollContainer").classList.toggle("d-none", !pollExists);
+    document.getElementById("noPoll").classList.toggle("d-none", pollExists);
+
+    document.getElementById("adminPoll").classList.toggle("d-none", !pollExists);
+    document.getElementById("adminNoPoll").classList.toggle("d-none", pollExists);
 }
 
 function vote() {
+    const selected = document.querySelector('input[name="option"]:checked');
+    if (!selected) return alert("Valitse vaihtoehto");
+
     document.getElementById("voteResult").classList.remove("d-none");
+}
+
+function deletePoll() {
+    if (confirm("Haluatko varmasti poistaa äänestyksen?")) {
+        pollExists = false;
+        updatePollVisibility();
+    }
 }
