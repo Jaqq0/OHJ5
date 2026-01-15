@@ -14,7 +14,7 @@
             <input id="username" class="form-control mb-2" placeholder="Käyttäjätunnus">
             <input id="password" type="password" class="form-control mb-3" placeholder="Salasana">
             <button class="btn btn-primary w-100" onclick="login()">Kirjaudu</button>
-            <div id="loginError" class="text-danger mt-2" style="display: none;">Virheellinen käyttäjätunnus tai salasana.</div>
+            <div id="loginError" class="text-danger mt-2 d-none">Virheellinen käyttäjätunnus tai salasana.</div>
 
             <hr>
             <p class="small">
@@ -26,50 +26,21 @@
 
         <div id="userView" class="d-none">
             <button class="btn btn-outline-secondary mb-3" onclick="logout()">Kirjaudu ulos</button>
-            
-            <div id="pollContainer">
-                <h3>Paras ohjelmointikieli?</h3>
-
-                <form id="voteForm">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="option" value="Java">
-                        <label class="form-check-label">Java</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="option" value="Python">
-                        <label class="form-check-label">Python</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="option" value="Javascript">
-                        <label class="form-check-label">Javascript</label>
-                    </div>
-
-                    <button type="button" class="btn btn-success mt-3" onclick="vote()">Äänestä</button>
-                </form>
-
-                <div id="voteResult" class="alert alert-success d-none mt-3">
-                    Kiitos äänestyksestäsi!
-                </div>
-            </div>
-
-            <div id="noPoll" class="alert alert-warning d-none">
-                Tällä hetkellä ei ole aktiivisia äänestyksiä.
-            </div>
+            <h3>Äänestykset</h3>
+            <div id="userPolls"></div>
         </div>
 
         <div id="adminView" class="d-none">
             <button class="btn btn-online-secondary mb-3" onclick="logout()">Kirjaudu ulos</button>
+            <h3>Hallinnoi äänestyksiä</h3>
 
-            <h3>Hallinnoi äänestyksia</h3>
-
-            <div id="adminPoll" class="card p-3 mb-3">
-                <p><strong>Paras ohjelmointikieli?</strong></p>
-                <button class="btn btn-danger" onclick="deletePoll()">Poista äänestys</button>
+            <div class="card p-3 mb-4">
+                <h5>Uusi äänestys</h5>
+                <input id="newPollTitle" class="form-control mb-2" placeholder="Äänestyksen otsikko">
+                <textarea id="newPollOptions" class="form-control mb-2" rows="3" placeholder="Vaihtoehdot (yksi per rivi)"></textarea>
+                <button class="btn btn-primary" onclick="addPoll()">Luo äänestys</button>
             </div>
-
-            <div id="adminNoPoll" class="aler alert-warning d-none">
-                Ei aktiivisia äänestyksiä
-            </div>
+            <div id="adminPolls"></div>
         </div>
 
         <script src="script.js"></script>
